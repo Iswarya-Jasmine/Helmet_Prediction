@@ -1,6 +1,6 @@
 # 🪖 Helmet Detection System
 
-A **Deep Learning–based Helmet Detection System** built using **TensorFlow/Keras**, **OpenCV**, and **Gradio** to identify whether a rider is wearing a helmet or not. This project aims to improve road safety and support smart traffic monitoring systems.
+A **Deep Learning–based Helmet Detection System** built using **TensorFlow/Keras** and **OpenCV** to identify whether a rider is wearing a helmet or not. This project aims to improve road safety and support smart traffic monitoring systems through a **Google Colab live demo**.
 
 ---
 
@@ -14,8 +14,8 @@ Not wearing a helmet is one of the major causes of fatal injuries in road accide
 The system includes:
 
 * A deep learning model for image classification
-* A Gradio-based web interface for easy testing
-* Google Colab–friendly implementation
+* **Live image upload and prediction inside Google Colab**
+* Real-time detection output with bounding boxes and text results
 
 ---
 
@@ -46,38 +46,42 @@ helmet_dataset/
     └── no_helmet/
 ```
 
-### Class Distribution 
+### Class Distribution
 
 | Split | Helmet | No Helmet |
 | ----- | ------ | --------- |
 | Train | 280    | 330       |
-| Test  |  70    |  84       |
+| Test  | 70     | 84        |
+
+*(Train–test split created manually from the Kaggle dataset.)*
 
 ---
 
 ## 📸 Demo Screenshots
 
-### Gradio Web Interface
+### Google Colab Live Demo
 
-![Gradio UI](screenshots/UI.jpg)
+![Colab UI](helmet/output.jpg)
 
 ### Helmet Prediction Example
 
-<img src="screenshots/helmet.jpg" width="700"/>  
+<img src="helmet/img1.jpg" width="700"/>  
 
 ### No Helmet Prediction Example
 
-<img src="screenshots/no_helmet.jpg" width="700"/>  
+<img src="helmet/img2.jpg" width="700"/>  
 
 ---
 
-## 🚀 How to Use
+## 🚀 How to Use (Colab Live Demo)
 
-1. Open the provided Jupyter Notebook in **Google Colab**
-2. Load or train the model
-3. Run the Gradio interface cell
-4. Upload an image of a bike rider
-5. The system will predict **Helmet / No Helmet**
+1. Open the provided **Helmet_detection.ipynb** in **Google Colab**
+2. Run all cells sequentially
+3. Use the **Colab upload widget** to upload an image
+4. The model will process the image and display:
+
+   * The detected image with bounding boxes
+   * Text output: **“Helmet detected” / “No helmet detected”**
 
 > **Note:** If your trained model file is large, store it in Google Drive and load it in Colab.
 
@@ -96,22 +100,17 @@ helmet_dataset/
 * Python
 * TensorFlow / Keras
 * OpenCV
-* Gradio
 * Google Colab
 
 ---
 
 ## 👩‍💻 Author
 
-**[Your Name]**
-*(Replace with your actual name)*
+**[Iswarya Jasmine]**
 
----
 
-If you want, I can also:
 
-* ✅ customize this README for **your exact dataset**,
-* ✅ align it specifically with your **uploaded Notebook (`Helmet_detection.ipynb`)**, or
-* ✅ format it perfectly for **GitHub**.
 
-Just tell me 👍
+* align this **exactly with your uploaded notebook (`Helmet_detection.ipynb`)**, or
+* add a **Results & Accuracy section**, or
+* format this perfectly for **GitHub README** with badges and icons.
