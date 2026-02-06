@@ -1,36 +1,44 @@
 # 🪖 Helmet Detection System
 
-A **Deep Learning–based Helmet Detection System** built using **TensorFlow/Keras** and **OpenCV** to identify whether a rider is wearing a helmet or not. This project aims to improve road safety and support smart traffic monitoring systems through a **Google Colab live demo**.
+A **Deep Learning–based Helmet Detection System** built using **YOLOv8 (Ultralytics)** and **OpenCV**, demonstrated through a **Google Colab live demo**. The system detects riders in images and identifies whether they are wearing a helmet, aiming to improve road safety and support smart traffic monitoring.
 
 ---
 
 ## 📌 Project Overview
 
-Not wearing a helmet is one of the major causes of fatal injuries in road accidents. This project uses a **Convolutional Neural Network (CNN)** to classify images of two-wheeler riders into:
+Not wearing a helmet is one of the major causes of fatal injuries in road accidents. This project uses a **YOLOv8 object detection model** to:
 
-* ✅ **Helmet** – Rider is wearing a helmet
-* ❌ **No Helmet** – Rider is not wearing a helmet
+* Detect persons and heads in an image
+* Identify whether a detected rider is **with helmet** or **without helmet**
+* Draw bounding boxes around detected objects
+* Display clear text predictions in Colab
 
 The system includes:
 
-* A deep learning model for image classification
+* A **YOLOv8-based detection model** (not simple image classification)
 * **Live image upload and prediction inside Google Colab**
-* Real-time detection output with bounding boxes and text results
+* Real-time detection output with bounding boxes and labels
 
 ---
 
 ## 🧠 Model Details
 
-* **Architecture:** Custom CNN
-* **Input Size:** 224 × 224 RGB image
-* **Output Classes:**
+* **Base Model:** `yolov8n.pt` (YOLOv8 Nano — lightweight & fast)
+* **Framework:** Ultralytics YOLOv8
+* **Task:** Object Detection
+* **Fine-tuned on:** Helmet detection dataset (Kaggle – Andrew MVD)
+* **Final Trained Model:**
 
-  * `Helmet`
-  * `No Helmet`
-* **Loss Function:** Binary Crossentropy
-* **Optimizer:** Adam
-* **Regularization:** Dropout + Data Augmentation
-* **Framework:** TensorFlow / Keras
+  ```
+  runs/detect/helmet_model/weights/best.pt
+  ```
+* **What the model detects:**
+
+  * Person
+  * Head
+  * Helmet / No Helmet
+
+> 📌 Unlike a CNN classifier, this project performs **detection + classification in a single model** using YOLOv8.
 
 ---
 
@@ -65,32 +73,42 @@ helmet_dataset/
 
 ### Helmet Prediction Example
 
-<img src="helmet/img1.jpg" width="700"/>  
+<img src="helmet/img1.jpg" width="450"/>  
 
 ### No Helmet Prediction Example
 
-<img src="helmet/img2.jpg" width="700"/>  
+<img src="helmet/img2.jpg" width="450"/>  
 
 ---
 
 ## 🚀 How to Use (Colab Live Demo)
 
-1. Open the provided **Helmet_detection.ipynb** in **Google Colab**
-2. Run all cells sequentially
-3. Use the **Colab upload widget** to upload an image
-4. The model will process the image and display:
+1. Open **Helmet_detection.ipynb** in **Google Colab**
+2. Install dependencies and load `yolov8n.pt`
+3. Fine-tune the model (or load `best.pt`)
+4. Use the **Colab upload widget** to upload an image
+5. The model will display:
 
-   * The detected image with bounding boxes
+   * Detected image with bounding boxes
    * Text output: **“Helmet detected” / “No helmet detected”**
 
-> **Note:** If your trained model file is large, store it in Google Drive and load it in Colab.
+> **Note:** If the trained model file is large, store it in Google Drive and load it in Colab.
+
+---
+
+## 📈 Results (Your Project – Colab Based)
+
+* Successfully detects riders in most real-world images
+* Works well in daylight and clear scenes
+* Provides fast inference due to YOLOv8-n (nano) architecture
+* Suitable for real-time or CCTV-style monitoring experiments
 
 ---
 
 ## ⚠️ Limitations
 
-* Works best on clear images with visible riders
 * Performance may drop in low light, blur, or crowded scenes
+* Small helmets at long distances may be missed
 * Intended for **educational and demonstration purposes only**
 
 ---
@@ -98,7 +116,7 @@ helmet_dataset/
 ## 🧾 Technologies Used
 
 * Python
-* TensorFlow / Keras
+* Ultralytics YOLOv8
 * OpenCV
 * Google Colab
 
@@ -106,11 +124,4 @@ helmet_dataset/
 
 ## 👩‍💻 Author
 
-**[Iswarya Jasmine]**
-
-
-
-
-* align this **exactly with your uploaded notebook (`Helmet_detection.ipynb`)**, or
-* add a **Results & Accuracy section**, or
-* format this perfectly for **GitHub README** with badges and icons.
+**Iswarya Jasmine**
